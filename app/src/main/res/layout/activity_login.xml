@@ -59,6 +59,7 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
+                    android:text="@string/error_incorrect_password"
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
