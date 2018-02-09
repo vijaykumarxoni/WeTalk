@@ -8,10 +8,18 @@
     tools:context="com.spy.vksoni.wetalk.SplashActivity">
 
     <ImageView
+        android:id="@+id/wetalklogo"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/wetalk"/>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/wetalklogo"
+        android:layout_centerHorizontal="true"
+
+        />
 
 
 </RelativeLayout>
