@@ -2,7 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+android:weightSum="5"
     android:gravity="center_horizontal"
+    android:background="#AAf59836"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -18,7 +20,12 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:visibility="gone" />
-
+<ImageView
+    android:layout_weight="1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/wetalklogo"
+    />
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
@@ -59,7 +66,6 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:text="@string/error_incorrect_password"
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
@@ -68,10 +74,26 @@
                 android:id="@+id/email_sign_in_button"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
+                android:background="@drawable/loginbtneffect"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/action_sign_in"
+                android:text="Login"
                 android:textStyle="bold" />
+            <Button
+                android:layout_weight="0.1"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5.3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create an Account"
+                android:id="@+id/signup"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:padding="8dp"
+                android:background="@drawable/buttonclickeffect"
+                />
 
         </LinearLayout>
     </ScrollView>
