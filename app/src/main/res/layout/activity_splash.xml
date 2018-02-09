@@ -13,13 +13,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/wetalk"/>
+
     <ProgressBar
+        android:id="@+id/progressBarSplashScreen"
+        style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/wetalklogo"
+        android:layout_alignTop="@+id/wetalklogo"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="104dp" />
 
-        />
+    />
 
 
 </RelativeLayout>
