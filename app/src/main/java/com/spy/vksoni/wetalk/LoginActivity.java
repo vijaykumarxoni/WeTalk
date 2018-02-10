@@ -3,6 +3,7 @@ package com.spy.vksoni.wetalk;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -61,6 +62,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks 
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private Button signup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,9 +91,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks 
                 attemptLogin();
             }
         });
+        signup= findViewById(R.id.signup);
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+        signup.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(), SignUpActivity.class);
+                startActivity(i);
+            }
+        });
+
     }
 
     private void populateAutoComplete() {

@@ -32,7 +32,7 @@ ProgressBar progressBar;
                     i+=10;
                 }
                 if(i==50){
-                        startActivity(new Intent(SplashActivity.this,HomeActivity.class));
+                        startActivity(new Intent(SplashActivity.this,LoginActivity.class));
                         finish();
 
                 }
