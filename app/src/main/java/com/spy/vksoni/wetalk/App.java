@@ -14,9 +14,13 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
-        Configuration obj=new Configuration.Builder(this).setDatabaseName("wetalk.db").setModelClasses(Users.class).create();
-        ActiveAndroid.initialize(obj);
 
+        Configuration dbConfiguration =
+                new Configuration.Builder(this).
+                        setDatabaseName("wetalk.db").setModelClasses(Users.class)
+                        .create();
+
+        ActiveAndroid.initialize(dbConfiguration);
 
     }
 }

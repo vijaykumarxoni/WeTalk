@@ -26,6 +26,13 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="wetalk.db" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="5" />
+
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
