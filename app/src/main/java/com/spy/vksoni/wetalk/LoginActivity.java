@@ -3,7 +3,9 @@ package com.spy.vksoni.wetalk;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -29,6 +31,9 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.spy.vksoni.wetalk.db.DBHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +93,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks 
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                attemptLogin();
+                //attemptLogin();
+                if(DBHandler.getInstance().acoountAuthentication(getApplicationContext(),mEmailView.getText().toString()
+                        ,mPasswordView.getText().toString())){
+                    startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                    finish();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Incorrect Email or Password",Toast.LENGTH_SHORT).show();
+                }
             }
         });
         signup= findViewById(R.id.signup);
@@ -101,6 +114,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks 
             public void onClick(View v) {
                 Intent i=new Intent(getApplicationContext(), SignUpActivity.class);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -357,6 +371,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks 
             mAuthTask = null;
             showProgress(false);
         }
+    }
+
+    public void addToSharePrefrences(int user_id,String name, String email, String pass){
+        SharedPreferences sharedPreferencespre =getSharedPreferences("Login", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferencespre.edit();
+
+        editor.putString("Name",name);
+        editor.putString("Email",email);
+        editor.putString("Password",pass);
+        editor.putInt("UserId",user_id);
+        editor.apply();
+        editor.commit();
+
+
     }
 }
 

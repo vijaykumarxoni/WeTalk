@@ -32,8 +32,15 @@ ProgressBar progressBar;
                     i+=10;
                 }
                 if(i==50){
+                    SharedPreferences sharedPreferencespre =getSharedPreferences("Login", Context.MODE_PRIVATE);
+                    if(!(sharedPreferencespre.getString("Email","")=="" && sharedPreferencespre.getString("Password","")=="")){
+                        startActivity(new Intent(SplashActivity.this,HomeActivity.class));
+                        finish();}
+                    else{
                         startActivity(new Intent(SplashActivity.this,LoginActivity.class));
                         finish();
+
+                    }
 
                 }
             }
