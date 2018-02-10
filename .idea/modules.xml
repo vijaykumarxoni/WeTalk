@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/WeTalk.iml" filepath="$PROJECT_DIR$/WeTalk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/WeTalk.iml" filepath="$PROJECT_DIR$/.idea/WeTalk.iml" />
+      <module fileurl="file://C:\Users\Dell\AndroidStudioProjects\WeTalk\WeTalk.iml" filepath="C:\Users\Dell\AndroidStudioProjects\WeTalk\WeTalk.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
