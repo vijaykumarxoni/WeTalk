@@ -1,26 +1,23 @@
-package com.spy.vksoni.wetalk;
+package com.spy.vksoni.wetalk.db;
+
+import android.app.Application;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.Configuration;
-import com.activeandroid.app.Application;
-import com.spy.vksoni.wetalk.db.Users;
 
 /**
- * Created by Dell on 2018-02-10.
+ * Created by Vksoni on 2/10/2018.
  */
-
-public class App extends Application {
+class DBConnection extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
-
         Configuration dbConfiguration =
                 new Configuration.Builder(this).
-                        setDatabaseName("wetalk.db").setModelClasses(Users.class)
+                        setDatabaseName("WeTalk.db").setModelClasses(User.class)
                         .create();
 
         ActiveAndroid.initialize(dbConfiguration);
-
     }
 }
+
