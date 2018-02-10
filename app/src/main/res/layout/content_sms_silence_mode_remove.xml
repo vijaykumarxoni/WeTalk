@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.spy.vksoni.wetalk.SmsSilenceModeRemoveActivity"
+    tools:showIn="@layout/activity_sms_silence_mode_remove">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="60dp"
+        android:background="@android:color/white"
+        android:src="@drawable/bell" />
+
+    <EditText
+        android:id="@+id/editTextCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:hint="Code "
+        android:layout_marginRight="30dp"
+        android:inputType="textPersonName"
+        android:text="SLM#-" />
+    <Button
+        android:id="@+id/btnSetCode"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:text="Set Code"/>
+
+    <Button
+        android:id="@+id/btnSetUpdateCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:visibility="invisible"
+        android:text="Update Code" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textSize="16dp"
+        android:textColor="@android:color/background_dark"
+        android:text="Write the code to change Silence mode of your phone by sending sms with this code (Code must be in format: SLM#-example)"
+        android:layout_height="wrap_content" />
+</LinearLayout>

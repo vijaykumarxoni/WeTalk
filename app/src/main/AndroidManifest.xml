@@ -6,7 +6,10 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".db.DBConnection"
@@ -16,6 +19,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <receiver
+            android:name=".Receiver.SilentCodeReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,8 +38,6 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
 
-
-
         <meta-data
             android:name="AA_DB_NAME"
             android:value="WeTalk.db" />
@@ -36,12 +45,15 @@
             android:name="AA_DB_VERSION"
             android:value="5" />
 
-
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".SignUpActivity" />
+        <activity
+            android:name=".SmsSilenceModeRemoveActivity"
+            android:label="@string/title_activity_sms_silence_mode_remove"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
