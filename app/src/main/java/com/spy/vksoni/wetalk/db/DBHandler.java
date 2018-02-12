@@ -55,5 +55,20 @@ public class DBHandler {
 
 
     }
+    public void clearSharePrefrences(Context context){
+        SharedPreferences sharedPreferencespre =context.getSharedPreferences("Login", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferencespre.edit();
+
+        editor.putString("Name","");
+        editor.putString("Email","");
+        editor.putString("Password","");
+        editor.putInt("UserId",-1);
+        editor.apply();
+        editor.commit();
+
+
+
+
+    }
 
 }

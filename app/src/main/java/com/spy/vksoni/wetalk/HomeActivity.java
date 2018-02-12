@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.spy.vksoni.wetalk.Adapter.TabAdapter;
+import com.spy.vksoni.wetalk.db.DBHandler;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,8 +46,9 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+               Intent i=new Intent(HomeActivity.this,SendSmsActivity.class);
+               startActivity(i);
+
             }
         });
 
@@ -85,8 +87,14 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+//            Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+            DBHandler.getInstance().clearSharePrefrences(getApplicationContext());
+            startActivity(new Intent(HomeActivity.this,LoginActivity.class));
+            finish();
+
             return true;
+
         }
 
         return super.onOptionsItemSelected(item);
