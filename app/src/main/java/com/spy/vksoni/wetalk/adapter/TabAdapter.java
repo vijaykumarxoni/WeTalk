@@ -1,4 +1,4 @@
-package com.spy.vksoni.wetalk.Adapter;
+package com.spy.vksoni.wetalk.adapter;
 
 
 import android.support.v4.app.Fragment;
