@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,17 +7,64 @@
     tools:context="com.spy.vksoni.wetalk.MessageActivity">
 
 
+    <com.andexert.library.RippleView
+        android:id="@+id/rippleView"
+        android:layout_width="?android:actionBarSize"
+        android:layout_height="?android:actionBarSize"
+        android:layout_margin="5dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="10dp"
+
+
+        rv_centered="true">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingBtnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:src="@drawable/ic_action_send"
+            android:tint="@android:color/white"
+            app:fabSize="mini"
+            android:layout_centerInParent="true"
+            android:padding="10dp"
+
+            />
+
+    </com.andexert.library.RippleView>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/rippleView">
+
+        <EditText
+            android:id="@+id/editTextMessageWrite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Message..." />
+    </android.support.design.widget.TextInputLayout>
+
+
     <ListView
         android:id="@+id/listViewMsg"
         android:layout_width="match_parent"
 
-        android:layout_above="@+id/messageEdit"
 
-        android:layout_below="@+id/meLbl"
+        android:layout_above="@id/rippleView"
 
         android:layout_marginTop="10dp"
         android:stackFromBottom="true"
         android:smoothScrollbar="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="16dp"
 
         android:requiresFadingEdge="horizontal"
         android:listSelector="@android:color/transparent"
@@ -27,4 +74,4 @@
         android:divider="@null"
         android:layout_height="match_parent"></ListView>
 
-</LinearLayout>
+</RelativeLayout>
