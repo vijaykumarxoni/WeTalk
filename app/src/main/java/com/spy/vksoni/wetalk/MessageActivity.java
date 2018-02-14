@@ -3,6 +3,7 @@ package com.spy.vksoni.wetalk;
 import android.Manifest;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -40,17 +41,16 @@ public class MessageActivity extends AppCompatActivity {
         floatingActionButtonSend=(FloatingActionButton)findViewById(R.id.floatingBtnSend);
         listViewMsg.setAdapter(listViewAdapterMsg);
         rippleView=(RippleView)findViewById(R.id.rippleView);
-//
+
 //
 //        rippleView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//               SmsManager smsManager = SmsManager.getDefault();
-//                   smsManager.sendTextMessage(phone_no,
-//                           null, editTextMessageWrite.getText().toString(), null, null);
-//                   Toast.makeText(getApplicationContext(),"Sended to:"+phone_no,Toast.LENGTH_SHORT).show();
+//               try{ SmsManager smsob=SmsManager.getDefault();
+//                smsob.sendTextMessage(phone_no, null, editTextMessageWrite.getText().toString(), null, null);
+//                Toast.makeText(getApplicationContext(),"Sended to:"+phone_no,Toast.LENGTH_SHORT).show();
 //
-//
+//               }catch (Exception e){}
 //                editTextMessageWrite.setText("");
 //            }
 //
@@ -59,11 +59,11 @@ public class MessageActivity extends AppCompatActivity {
         floatingActionButtonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SmsManager smsManager = SmsManager.getDefault();
-                smsManager.sendTextMessage(phone_no,
-                        null, editTextMessageWrite.getText().toString(), null, null);
-                Toast.makeText(getApplicationContext(),"Sended to:"+phone_no,Toast.LENGTH_SHORT).show();
+                try{ SmsManager smsob=SmsManager.getDefault();
+                    smsob.sendTextMessage(phone_no, null, editTextMessageWrite.getText().toString(), null, null);
+                    Toast.makeText(getApplicationContext(),"Sended to:"+phone_no,Toast.LENGTH_SHORT).show();
 
+                }catch (Exception e){}
                 editTextMessageWrite.setText("");
             }
 

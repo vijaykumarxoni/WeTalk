@@ -23,13 +23,13 @@ public class SmsSilenceModeRemoveActivity extends AppCompatActivity {
 Button btnSetCode,btnUpdatecode;
 EditText editTextCode;
     SmsCode smsCode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sms_silence_mode_remove);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.RECEIVE_SMS},123);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -103,6 +103,8 @@ EditText editTextCode;
         }
 
         return true; }
+
+
 
 }
 
