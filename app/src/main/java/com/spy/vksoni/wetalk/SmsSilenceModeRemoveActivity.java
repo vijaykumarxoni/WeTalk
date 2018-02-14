@@ -27,20 +27,20 @@ EditText editTextCode;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sms_silence_mode_remove);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.RECEIVE_SMS},123);
 
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-
-            }
-        });
+//
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//
+//            }
+//        });
         btnSetCode=(Button)findViewById(R.id.btnSetCode);
         btnUpdatecode=(Button)findViewById(R.id.btnSetUpdateCode);
         editTextCode=(EditText)findViewById(R.id.editTextCode);
@@ -96,9 +96,9 @@ EditText editTextCode;
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if(item.getTitle().toString().equalsIgnoreCase("Update Code")){
-        editTextCode.setEnabled(true);
-        btnSetCode.setEnabled(false);
-        btnUpdatecode.setVisibility(View.VISIBLE);
+            editTextCode.setEnabled(true);
+            btnSetCode.setEnabled(false);
+            btnUpdatecode.setVisibility(View.VISIBLE);
 
         }
 

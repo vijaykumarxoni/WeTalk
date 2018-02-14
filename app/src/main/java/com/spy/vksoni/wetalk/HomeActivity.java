@@ -46,9 +46,13 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Intent i=new Intent(HomeActivity.this,SendSmsActivity.class);
-               startActivity(i);
-
+                try {
+                    Intent i = new Intent(HomeActivity.this, SendSmsActivity.class);
+                    startActivity(i);
+                }
+                catch(Exception e){
+                    Toast.makeText(HomeActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -107,9 +111,15 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_sms_silence_code) {
-
+            try{
             startActivity(new Intent(HomeActivity.this,SmsSilenceModeRemoveActivity.class));
-        } else if (id == R.id.nav_gallery) {
+            }
+            catch(Exception e){
+                Toast.makeText(HomeActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+            } else if (id == R.id.alert_set) {
+            startActivity(new Intent(HomeActivity.this,AlertToneSetActivity.class));
+
 
         } else if (id == R.id.nav_slideshow) {
 

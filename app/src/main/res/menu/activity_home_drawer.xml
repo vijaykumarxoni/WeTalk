@@ -9,9 +9,9 @@
             android:icon="@drawable/ic_silence_code"
             android:title="Set up SMS Silence mode code" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/alert_set"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="Set up an Alert Tone" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"

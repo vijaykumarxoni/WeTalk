@@ -14,7 +14,7 @@ class DBConnection extends Application {
         super.onCreate();
         Configuration dbConfiguration =
                 new Configuration.Builder(this).
-                        setDatabaseName("WeTalk.db").setModelClasses(User.class,SmsCode.class)
+                        setDatabaseName("WeTalk.db").setModelClasses(User.class,SmsCode.class,AlertCode.class)
                         .create();
 
         ActiveAndroid.initialize(dbConfiguration);
