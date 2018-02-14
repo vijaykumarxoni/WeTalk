@@ -19,8 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.spy.vksoni.wetalk.adapter.TabAdapter;
-import com.spy.vksoni.wetalk.services.MessageService;
+import com.spy.vksoni.wetalk.Adapter.TabAdapter;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,8 +31,6 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        startService(new Intent(getApplicationContext(), MessageService.class));
-
 
         TabLayout tabLayout=(TabLayout)findViewById(R.id.tabs);
         ViewPager viewpager =(ViewPager)findViewById(R.id.viewpager);
@@ -42,8 +39,6 @@ public class HomeActivity extends AppCompatActivity
         TabAdapter adapter=new TabAdapter(getSupportFragmentManager());
         viewpager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewpager);
-
-
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -90,8 +85,7 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_logout) {
-            logout();
+        if (id == R.id.action_settings) {
             return true;
         }
 
