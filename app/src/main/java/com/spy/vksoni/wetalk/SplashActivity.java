@@ -7,6 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 
+import com.activeandroid.query.Select;
+import com.spy.vksoni.wetalk.db.SMSModel;
+import com.spy.vksoni.wetalk.services.MessageService;
+
+import java.util.List;
+
 public class SplashActivity extends AppCompatActivity {
 ProgressBar progressBar;
     @Override
@@ -14,6 +20,10 @@ ProgressBar progressBar;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         progressBar=(ProgressBar)findViewById(R.id.progressBarSplashScreen);
+        List<SMSModel> sms=new Select().all().from(SMSModel.class).execute();
+
+        //start service
+
 
         new Thread( new Runnable(){
 

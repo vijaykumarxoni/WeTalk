@@ -20,7 +20,6 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.spy.vksoni.wetalk.Adapter.TabAdapter;
-import com.spy.vksoni.wetalk.db.DBHandler;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -46,13 +45,8 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    Intent i = new Intent(HomeActivity.this, SendSmsActivity.class);
-                    startActivity(i);
-                }
-                catch(Exception e){
-                    Toast.makeText(HomeActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
 
@@ -91,14 +85,8 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_logout) {
-//            Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
-            DBHandler.getInstance().clearSharePrefrences(getApplicationContext());
-            startActivity(new Intent(HomeActivity.this,LoginActivity.class));
-            finish();
-
+        if (id == R.id.action_settings) {
             return true;
-
         }
 
         return super.onOptionsItemSelected(item);
@@ -111,15 +99,9 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_sms_silence_code) {
-            try{
-            startActivity(new Intent(HomeActivity.this,SmsSilenceModeRemoveActivity.class));
-            }
-            catch(Exception e){
-                Toast.makeText(HomeActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-            } else if (id == R.id.alert_set) {
-            startActivity(new Intent(HomeActivity.this,AlertToneSetActivity.class));
 
+            startActivity(new Intent(HomeActivity.this,SmsSilenceModeRemoveActivity.class));
+        } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
 

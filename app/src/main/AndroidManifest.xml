@@ -8,7 +8,13 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+=======
+    <uses-permission android:name="android.permission.READ_SMS" />
+
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+>>>>>>> origin/master
 
     <application
         android:name=".db.DBConnection"
@@ -18,6 +24,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
+=======
+        <receiver
+            android:name=".receiver.SMSReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+>>>>>>> origin/master
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,9 +66,21 @@
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SignUpActivity" />
+<<<<<<< HEAD
         <activity android:name=".SendSmsActivity" />
         <activity android:name=".SmsSilenceModeRemoveActivity" />
         <activity android:name=".AlertToneSetActivity"></activity>
+=======
+        <activity
+            android:name=".SmsSilenceModeRemoveActivity"
+            android:label="@string/title_activity_sms_silence_mode_remove"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MessageActivity"></activity>
+
+        <service
+            android:name=".services.MessageService"
+            android:exported="false" />
+>>>>>>> origin/master
     </application>
 
 </manifest>

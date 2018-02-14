@@ -6,18 +6,23 @@ import com.activeandroid.ActiveAndroid;
 import com.activeandroid.Configuration;
 
 /**
- * Created by Vksoni on 2/10/2018.
+ * Created by Vksoni on 2/13/2018.
  */
-class DBConnection extends Application {
+
+public class DBConnection extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
         Configuration dbConfiguration =
                 new Configuration.Builder(this).
+<<<<<<< HEAD:app/src/main/java/com/spy/vksoni/wetalk/db/DBConncetion.java
                         setDatabaseName("WeTalk.db").setModelClasses(User.class,SmsCode.class,AlertCode.class)
+=======
+                        setDatabaseName("WeTalk.db").setModelClasses(User.class, SmsCode.class
+                        , SMSModel.class, ConversationModel.class)
+>>>>>>> origin/master:app/src/main/java/com/spy/vksoni/wetalk/db/DBConnection.java
                         .create();
 
         ActiveAndroid.initialize(dbConfiguration);
     }
-}
-
+    }
