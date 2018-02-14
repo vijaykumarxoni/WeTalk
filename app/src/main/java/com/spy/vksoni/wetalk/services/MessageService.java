@@ -45,10 +45,12 @@ public class MessageService extends Service {
                 while (true) {
 
                     try {
-                        Thread.sleep(3000);
+                        Thread.sleep(2000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+finally {
+
 
                     Uri uriSMSURI = Uri.parse("content://sms/");
 
@@ -77,7 +79,7 @@ if(!(body.equalsIgnoreCase(tempMsg))) {
 }
                     }
 
-                }
+                }}
             }
         }).start();
 
