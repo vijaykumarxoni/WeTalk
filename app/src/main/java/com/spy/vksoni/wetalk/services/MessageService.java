@@ -23,7 +23,7 @@ public class MessageService extends Service {
     Date d=new Date();
     String  date=new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
     Calendar calendar=Calendar.getInstance();
-    SimpleDateFormat format=new SimpleDateFormat("h:mm a");
+    SimpleDateFormat format=new SimpleDateFormat("HH:mm a");
     String time=format.format(calendar.getTime());
     List<SMSModel> smsList;
     String tempMsg;

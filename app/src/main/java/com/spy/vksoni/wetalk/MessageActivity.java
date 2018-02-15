@@ -23,7 +23,7 @@ public class MessageActivity extends AppCompatActivity {
 
     ListView listViewMsg;
     public static ListViewAdapterMsg listViewAdapterMsg;
-    List<SMSModel> msgList;
+    public static List<SMSModel> msgList;
     EditText editTextMsg;
     FloatingActionButton floatingActionButtonSend;
     RippleView rippleView;
@@ -48,7 +48,7 @@ public class MessageActivity extends AppCompatActivity {
         floatingActionButtonSend=(FloatingActionButton)findViewById(R.id.floatingBtnSend);
         listViewMsg.setAdapter(listViewAdapterMsg);
         rippleView=(RippleView)findViewById(R.id.rippleView);
-listViewAdapterMsg.notifyDataSetChanged();
+
 
 //        rippleView.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -81,7 +81,7 @@ listViewAdapterMsg.notifyDataSetChanged();
     }
 
 
-    public void refreshList(SMSModel smsModel){
+    public static void refreshList(SMSModel smsModel){
         listViewAdapterMsg.refreshAdapter(smsModel);
     }
 }
