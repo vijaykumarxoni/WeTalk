@@ -77,8 +77,7 @@ public class SMSReceiver extends BroadcastReceiver {
             new Update(ConversationModel.class).set("msg_rec_date = ?," +
                     "msg_rec_time = ?", date, time)
                     .where("conver_id = ?", con_id).execute();
-            DBHandler.getInstance().addMessage(message.getMessageBody(),
-                    message.getDisplayOriginatingAddress(), "Received", con_id);
+
 
         } else {
 

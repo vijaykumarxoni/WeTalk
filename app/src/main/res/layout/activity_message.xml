@@ -44,7 +44,7 @@
         android:layout_toLeftOf="@+id/rippleView">
 
         <EditText
-            android:id="@+id/editTextMessageWrite"
+            android:id="@+id/editTextMsg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"

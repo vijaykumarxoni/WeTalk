@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
+import static android.Manifest.permission.SEND_SMS;
 
 /**
  * A login screen that offers login via email/password.
@@ -49,6 +50,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks 
      * Id to identity READ_CONTACTS permission request.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
+    private static final int REQUEST_SEND_SMS = 1;
+
 
     /**
      * A dummy authentication store containing known user names and passwords.
@@ -76,7 +79,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
-
+        mayRequestSendSMS();
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -162,7 +165,36 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks 
                 populateAutoComplete();
             }
         }
+        if (requestCode == REQUEST_SEND_SMS) {
+            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            }
+        }
+
     }
+    private boolean mayRequestSendSMS() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return true;
+        }
+        if (checkSelfPermission(SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        }
+        if (shouldShowRequestPermissionRationale(SEND_SMS
+        )) {
+            Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
+                    .setAction(android.R.string.ok, new View.OnClickListener() {
+                        @Override
+                        @TargetApi(Build.VERSION_CODES.M)
+                        public void onClick(View v) {
+                            requestPermissions(new String[]{SEND_SMS}, REQUEST_SEND_SMS);
+                        }
+                    });
+        } else {
+            requestPermissions(new String[]{SEND_SMS}, REQUEST_SEND_SMS);
+        }
+        return false;
+    }
+
+
 
 
     /**

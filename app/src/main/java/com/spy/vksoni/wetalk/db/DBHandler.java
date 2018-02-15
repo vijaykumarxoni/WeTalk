@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.activeandroid.query.Select;
+import com.spy.vksoni.wetalk.MessageActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,7 +32,7 @@ public class DBHandler {
     Date d=new Date();
     String  date=new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
     Calendar calendar=Calendar.getInstance();
-    SimpleDateFormat format=new SimpleDateFormat("H:mm a");
+    SimpleDateFormat format=new SimpleDateFormat("h:mm a");
     String time=format.format(calendar.getTime());
 
     public boolean acoountAuthentication(Context context, String userEmail,String userPassword){
@@ -105,6 +106,8 @@ public class DBHandler {
         smsModel.conver_id=conv_id;
         smsModel.save();
 
+//        MessageActivity messageActivity=MessageActivity.newIntenence();
+//        messageActivity.refreshList(smsModel);
 
 
     }

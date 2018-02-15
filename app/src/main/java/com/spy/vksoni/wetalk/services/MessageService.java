@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.widget.Toast;
 
 import com.activeandroid.query.Select;
+import com.spy.vksoni.wetalk.MessageActivity;
 import com.spy.vksoni.wetalk.db.SMSModel;
 
 import java.text.SimpleDateFormat;
@@ -22,7 +23,7 @@ public class MessageService extends Service {
     Date d=new Date();
     String  date=new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
     Calendar calendar=Calendar.getInstance();
-    SimpleDateFormat format=new SimpleDateFormat("HH:mm a");
+    SimpleDateFormat format=new SimpleDateFormat("h:mm a");
     String time=format.format(calendar.getTime());
     List<SMSModel> smsList;
     String tempMsg;
@@ -45,7 +46,7 @@ public class MessageService extends Service {
                 while (true) {
 
                     try {
-                        Thread.sleep(2000);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -75,6 +76,9 @@ if(!(body.equalsIgnoreCase(tempMsg))) {
     smsModel.msg_type = "Sended";
 
     smsModel.save();
+
+
+
     tempMsg=body;
 }
                     }

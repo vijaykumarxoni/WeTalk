@@ -22,12 +22,19 @@ import java.util.List;
 public class MessageActivity extends AppCompatActivity {
 
     ListView listViewMsg;
-    ListViewAdapterMsg listViewAdapterMsg;
+    public static ListViewAdapterMsg listViewAdapterMsg;
     List<SMSModel> msgList;
-    EditText editTextMessageWrite;
+    EditText editTextMsg;
     FloatingActionButton floatingActionButtonSend;
     RippleView rippleView;
     String phone_no;
+    String msgBody;
+
+    public static MessageActivity instance=new MessageActivity();;
+    public static MessageActivity newIntenence(){
+        return  instance;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,14 +42,14 @@ public class MessageActivity extends AppCompatActivity {
         listViewMsg=(ListView)findViewById(R.id.listViewMsg);
         Intent i=getIntent();
         phone_no=i.getStringExtra("phone_no");
-        editTextMessageWrite=(EditText)findViewById(R.id.editTextMessageWrite);
+        editTextMsg=(EditText)findViewById(R.id.editTextMsg);
         msgList= DBHandler.getInstance().getSMS(phone_no);
         listViewAdapterMsg=new ListViewAdapterMsg(getApplicationContext(),msgList);
         floatingActionButtonSend=(FloatingActionButton)findViewById(R.id.floatingBtnSend);
         listViewMsg.setAdapter(listViewAdapterMsg);
         rippleView=(RippleView)findViewById(R.id.rippleView);
+listViewAdapterMsg.notifyDataSetChanged();
 
-//
 //        rippleView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -56,18 +63,25 @@ public class MessageActivity extends AppCompatActivity {
 //
 //        });
 
+
+
         floatingActionButtonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try{ SmsManager smsob=SmsManager.getDefault();
-                    smsob.sendTextMessage(phone_no, null, editTextMessageWrite.getText().toString(), null, null);
+                    msgBody=  editTextMsg.getText().toString();
+                    smsob.sendTextMessage(phone_no, null,msgBody , null, null);
                     Toast.makeText(getApplicationContext(),"Sended to:"+phone_no,Toast.LENGTH_SHORT).show();
-
                 }catch (Exception e){}
-                editTextMessageWrite.setText("");
+                editTextMsg.setText("");
             }
 
         });
 
+    }
+
+
+    public void refreshList(SMSModel smsModel){
+        listViewAdapterMsg.refreshAdapter(smsModel);
     }
 }
