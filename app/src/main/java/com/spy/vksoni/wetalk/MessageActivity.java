@@ -90,7 +90,5 @@ public class MessageActivity extends AppCompatActivity {
 try {
     listViewAdapterMsg.refreshAdapter(smsModel);}catch (Exception e){}
 }
-    }
 
-
-
+}

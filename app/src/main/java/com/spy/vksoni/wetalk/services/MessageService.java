@@ -69,6 +69,8 @@ if(!(body.equalsIgnoreCase(tempMsg)&&
         address.equalsIgnoreCase(tempAddress)&&
         date.equalsIgnoreCase(tempDate)&&
                         time.equalsIgnoreCase(tempTime))) {
+    try {
+
     if(!(smsList.get(smsList.size()-1).msg_body.equals(body)&&
             smsList.get(smsList.size()-1).phone_no.equals(address))){
     SMSModel smsModel = new SMSModel();
@@ -87,7 +89,26 @@ if(!(body.equalsIgnoreCase(tempMsg)&&
      tempDate=date;
      tempTime=time;
     tempMsg=body;
-}}
+}
+    }catch (Exception e){
+        SMSModel smsModel = new SMSModel();
+        smsModel.msg_body = body;
+        smsModel.msg_rec_time = time;
+        smsModel.msg_rec_date = date;
+        smsModel.msg_id = new Select().all().from(SMSModel.class).execute().size();
+        smsModel.phone_no = address;
+        //smsModel.conver_id=getConversationId(address);
+        smsModel.msg_type = "Sended";
+
+        smsModel.save();
+
+
+        tempAddress=address;
+        tempDate=date;
+        tempTime=time;
+        tempMsg=body;
+    }}
+
                     }
 
                 }}
