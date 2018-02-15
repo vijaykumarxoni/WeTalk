@@ -46,7 +46,7 @@ public class SMSReceiver extends BroadcastReceiver {
         Date d = new Date();
         String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat format = new SimpleDateFormat("h:mm a");
+        SimpleDateFormat format = new SimpleDateFormat("h:mm:ss a");
         String time = format.format(calendar.getTime());
 
         SmsCode smsCode = new Select().all().from(SmsCode.class).executeSingle();
