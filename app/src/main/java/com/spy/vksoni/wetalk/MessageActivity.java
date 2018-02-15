@@ -87,8 +87,10 @@ public class MessageActivity extends AppCompatActivity {
 
 
     public static void refreshList(SMSModel smsModel){
-        listViewAdapterMsg.refreshAdapter(smsModel);
+try {
+    listViewAdapterMsg.refreshAdapter(smsModel);}catch (Exception e){}
+}
     }
 
 
-}
+

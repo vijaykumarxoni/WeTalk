@@ -26,7 +26,7 @@ public class MessageService extends Service {
     SimpleDateFormat format=new SimpleDateFormat("h:mm a");
     String time=format.format(calendar.getTime());
     List<SMSModel> smsList;
-    String tempMsg;
+    String tempMsg,tempTime,tempDate,tempAddress;
 
     @Nullable
     @Override
@@ -65,7 +65,10 @@ finally {
 
                         String address = cur.getString(cur.getColumnIndex("address"));
                         String body = cur.getString(cur.getColumnIndexOrThrow("body"));
-if(!(body.equalsIgnoreCase(tempMsg))) {
+if(!(body.equalsIgnoreCase(tempMsg)&&
+        address.equalsIgnoreCase(tempAddress)&&
+        date.equalsIgnoreCase(tempDate)&&
+                        time.equalsIgnoreCase(tempTime))) {
     if(!(smsList.get(smsList.size()-1).msg_body.equals(body)&&
             smsList.get(smsList.size()-1).phone_no.equals(address))){
     SMSModel smsModel = new SMSModel();
@@ -80,7 +83,9 @@ if(!(body.equalsIgnoreCase(tempMsg))) {
     smsModel.save();
 
 
-
+     tempAddress=address;
+     tempDate=date;
+     tempTime=time;
     tempMsg=body;
 }}
                     }
