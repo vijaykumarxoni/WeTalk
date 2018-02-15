@@ -23,7 +23,7 @@ public class MessageService extends Service {
     Date d=new Date();
     String  date=new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
     Calendar calendar=Calendar.getInstance();
-    SimpleDateFormat format=new SimpleDateFormat("HH:mm a");
+    SimpleDateFormat format=new SimpleDateFormat("h:mm a");
     String time=format.format(calendar.getTime());
     List<SMSModel> smsList;
     String tempMsg;
@@ -46,7 +46,7 @@ public class MessageService extends Service {
                 while (true) {
 
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(2000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -66,6 +66,8 @@ finally {
                         String address = cur.getString(cur.getColumnIndex("address"));
                         String body = cur.getString(cur.getColumnIndexOrThrow("body"));
 if(!(body.equalsIgnoreCase(tempMsg))) {
+    if(!(smsList.get(smsList.size()-1).msg_body.equals(body)&&
+            smsList.get(smsList.size()-1).phone_no.equals(address))){
     SMSModel smsModel = new SMSModel();
     smsModel.msg_body = body;
     smsModel.msg_rec_time = time;
@@ -80,7 +82,7 @@ if(!(body.equalsIgnoreCase(tempMsg))) {
 
 
     tempMsg=body;
-}
+}}
                     }
 
                 }}

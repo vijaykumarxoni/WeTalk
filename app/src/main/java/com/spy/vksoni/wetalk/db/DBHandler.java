@@ -2,8 +2,6 @@ package com.spy.vksoni.wetalk.db;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.activeandroid.query.Select;
@@ -30,10 +28,10 @@ public class DBHandler {
     private DBHandler() {
     }
     Date d=new Date();
-    String  date=new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+    String SMSDate =new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
     Calendar calendar=Calendar.getInstance();
-    SimpleDateFormat format=new SimpleDateFormat("H:mm a");
-    String time=format.format(calendar.getTime());
+    SimpleDateFormat format=new SimpleDateFormat("h:mm a");
+    String SMSTime =format.format(calendar.getTime());
 
     public boolean acoountAuthentication(Context context, String userEmail,String userPassword){
         User user=new Select().all().from(User.class).
@@ -79,8 +77,8 @@ public class DBHandler {
         smsModel.msg_body= msg_body;
         smsModel.msg_type =msg_type;
         smsModel.phone_no=phone_no;
-        smsModel.msg_rec_date=date;
-        smsModel.msg_rec_time=time;
+        smsModel.msg_rec_date= SMSDate;
+        smsModel.msg_rec_time= SMSTime;
         smsModel.save();
 
     }
@@ -89,8 +87,8 @@ public class DBHandler {
         ConversationModel conversationModel=new ConversationModel();
         conversationModel.conver_id=con_id;
         conversationModel.sender_name_number=sender_name_num;
-        conversationModel.msg_rec_date=date;
-        conversationModel.msg_rec_time=time;
+        conversationModel.msg_rec_date= SMSDate;
+        conversationModel.msg_rec_time= SMSTime;
 
         conversationModel.save();
 
@@ -101,8 +99,8 @@ public class DBHandler {
         smsModel.msg_id=new Select().all().from(SMSModel.class).execute().size();
         smsModel.phone_no=number;
         smsModel.msg_body=msgBody;
-        smsModel.msg_rec_date=date;
-        smsModel.msg_rec_time=time;
+        smsModel.msg_rec_date= SMSDate;
+        smsModel.msg_rec_time= SMSTime;
         smsModel.conver_id=conv_id;
         smsModel.save();
 
@@ -117,8 +115,8 @@ public class DBHandler {
         smsModel.msg_id=new Select().all().from(SMSModel.class).execute().size();
         smsModel.phone_no=number;
         smsModel.msg_body=msgBody;
-        smsModel.msg_rec_date=date;
-        smsModel.msg_rec_time=time;
+        smsModel.msg_rec_date= SMSDate;
+        smsModel.msg_rec_time= SMSTime;
         smsModel.save();
 
         MessageActivity messageActivity=MessageActivity.newIntenence();
