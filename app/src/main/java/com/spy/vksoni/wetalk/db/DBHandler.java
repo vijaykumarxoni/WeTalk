@@ -111,6 +111,21 @@ public class DBHandler {
 
 
     }
+    public void addSendMessage(String msgBody,String number,String msgType){
+        SMSModel smsModel=new SMSModel();
+        smsModel.msg_type=msgType;
+        smsModel.msg_id=new Select().all().from(SMSModel.class).execute().size();
+        smsModel.phone_no=number;
+        smsModel.msg_body=msgBody;
+        smsModel.msg_rec_date=date;
+        smsModel.msg_rec_time=time;
+        smsModel.save();
+
+        MessageActivity messageActivity=MessageActivity.newIntenence();
+        messageActivity.refreshList(smsModel);
+
+
+    }
     public List<ConversationModel> getConversation(){
 
         return  new Select().all().from(ConversationModel.class).execute();}

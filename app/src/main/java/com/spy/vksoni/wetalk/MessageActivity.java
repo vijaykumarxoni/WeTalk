@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.activeandroid.query.Select;
 import com.andexert.library.RippleView;
 import com.spy.vksoni.wetalk.adapter.ListViewAdapterMsg;
 import com.spy.vksoni.wetalk.db.DBHandler;
@@ -70,6 +71,10 @@ public class MessageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try{ SmsManager smsob=SmsManager.getDefault();
                     msgBody=  editTextMsg.getText().toString();
+
+                  DBHandler.getInstance().addSendMessage(editTextMsg.getText().toString(),
+                          phone_no,"Sended");
+
                     smsob.sendTextMessage(phone_no, null,msgBody , null, null);
                     Toast.makeText(getApplicationContext(),"Sended to:"+phone_no,Toast.LENGTH_SHORT).show();
                 }catch (Exception e){}
