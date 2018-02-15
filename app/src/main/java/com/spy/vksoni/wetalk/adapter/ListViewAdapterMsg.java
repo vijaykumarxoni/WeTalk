@@ -113,8 +113,7 @@ else{
 
     public void refreshAdapter(SMSModel smsModel){
         smsList.add(smsModel);
-
-        this.notifyDataSetChanged();
+        notifyDataSetChanged();
     }
 
     }
